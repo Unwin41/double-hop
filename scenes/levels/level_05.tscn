@@ -1,0 +1,172 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_6shqt"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="2_de7pb"]
+[ext_resource type="TileSet" path="res://assets/tileset.tres" id="3_5j0jk"]
+[ext_resource type="PackedScene" path="res://scenes/objects/bat.tscn" id="4_vqqq3"]
+[ext_resource type="Script" path="res://scripts/patroller.gd" id="5_nnt6u"]
+[ext_resource type="PackedScene" path="res://scenes/objects/coin.tscn" id="6_d4rua"]
+[ext_resource type="Script" path="res://scripts/coin.gd" id="7_qqimg"]
+[ext_resource type="PackedScene" path="res://scenes/objects/refill_gem.tscn" id="8_3war2"]
+[ext_resource type="Script" path="res://scripts/refill_gem.gd" id="9_amq1l"]
+[ext_resource type="PackedScene" path="res://scenes/objects/goal.tscn" id="10_636ke"]
+[ext_resource type="Script" path="res://scripts/goal.gd" id="11_vgv04"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="12_q5sut"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="13_2v7ye"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="14_o7wf0"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="15_mq65u"]
+[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="16_bcmmy"]
+[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="17_lstof"]
+
+[node name="Level" type="Node2D" unique_id=2019143670]
+script = ExtResource("1_6shqt")
+level_name = "Cloud Hop"
+
+[node name="Sky" type="Parallax2D" parent="." unique_id=560495671]
+scroll_scale = Vector2(0.3, 0)
+script = ExtResource("2_de7pb")
+
+[node name="Decor" type="TileMapLayer" parent="." unique_id=699265744]
+tile_map_data = PackedByteArray("AABYAAsAAAAFAAYAAAA5AAwAAAAIAAcAAAAHAA0AAAAEAAYAAAAkAA0AAAAIAAcAAAA=")
+tile_set = ExtResource("3_5j0jk")
+
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1002750916]
+tile_map_data = PackedByteArray("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AABeAA8AAAACAAYAAABfAA8AAAACAAYAAABgAA8AAAACAAYAAABhAA8AAAACAAYAAABiAA8AAAACAAYAAABjAA8AAAACAAYAAAAAABAAAAACAAYAAAABABAAAAACAAYAAAACABAAAAACAAYAAAADABAAAAACAAYAAAAEABAAAAACAAYAAAAFABAAAAACAAYAAAAGABAAAAACAAYAAAAHABAAAAACAAYAAAAIABAAAAACAAYAAAAJABAAAAACAAYAAAAKABAAAAADAAYAAAAhABAAAAABAAYAAAAiABAAAAACAAYAAAAjABAAAAACAAYAAAAkABAAAAACAAYAAAAlABAAAAACAAYAAAAmABAAAAACAAYAAAAnABAAAAACAAYAAAAoABAAAAADAAYAAAAyABAAAAABAAYAAAAzABAAAAACAAYAAAA0ABAAAAACAAYAAAA1ABAAAAACAAYAAAA2ABAAAAACAAYAAAA3ABAAAAACAAYAAAA4ABAAAAACAAYAAAA5ABAAAAACAAYAAAA6ABAAAAACAAYAAAA7ABAAAAACAAYAAAA8ABAAAAADAAYAAABVABAAAAABAAYAAABWABAAAAACAAYAAABXABAAAAACAAYAAABYABAAAAACAAYAAABZABAAAAACAAYAAABaABAAAAACAAYAAABbABAAAAACAAYAAABcABAAAAACAAYAAABdABAAAAACAAYAAABeABAAAAACAAYAAABfABAAAAACAAYAAABgABAAAAACAAYAAABhABAAAAACAAYAAABiABAAAAACAAYAAABjABAAAAACAAYAAAAAABEAAAACAAYAAAABABEAAAACAAYAAAACABEAAAACAAYAAAADABEAAAACAAYAAAAEABEAAAACAAYAAAAFABEAAAACAAYAAAAGABEAAAACAAYAAAAHABEAAAACAAYAAAAIABEAAAACAAYAAAAJABEAAAACAAYAAAAKABEAAAADAAYAAAAhABEAAAABAAYAAAAiABEAAAACAAYAAAAjABEAAAACAAYAAAAkABEAAAACAAYAAAAlABEAAAACAAYAAAAmABEAAAACAAYAAAAnABEAAAACAAYAAAAoABEAAAADAAYAAAAyABEAAAABAAYAAAAzABEAAAACAAYAAAA0ABEAAAACAAYAAAA1ABEAAAACAAYAAAA2ABEAAAACAAYAAAA3ABEAAAACAAYAAAA4ABEAAAACAAYAAAA5ABEAAAACAAYAAAA6ABEAAAACAAYAAAA7ABEAAAACAAYAAAA8ABEAAAADAAYAAABVABEAAAABAAYAAABWABEAAAACAAYAAABXABEAAAACAAYAAABYABEAAAACAAYAAABZABEAAAACAAYAAABaABEAAAACAAYAAABbABEAAAACAAYAAABcABEAAAACAAYAAABdABEAAAACAAYAAABeABEAAAACAAYAAABfABEAAAACAAYAAABgABEAAAACAAYAAABhABEAAAACAAYAAABiABEAAAACAAYAAABjABEAAAACAAYAAAD///z/AAACAAYAAABkAPz/AAACAAYAAAD///3/AAACAAYAAABkAP3/AAACAAYAAAD///7/AAACAAYAAABkAP7/AAACAAYAAAD/////AAACAAYAAABkAP//AAACAAYAAAD//wAAAAACAAYAAABkAAAAAAACAAYAAAD//wEAAAACAAYAAABkAAEAAAACAAYAAAD//wIAAAACAAYAAABkAAIAAAACAAYAAAD//wMAAAACAAYAAABkAAMAAAACAAYAAAD//wQAAAACAAYAAABkAAQAAAACAAYAAAD//wUAAAACAAYAAABkAAUAAAACAAYAAAD//wYAAAACAAYAAABkAAYAAAACAAYAAAD//wcAAAACAAYAAABkAAcAAAACAAYAAAD//wgAAAACAAYAAABkAAgAAAACAAYAAAD//wkAAAACAAYAAABkAAkAAAACAAYAAAD//woAAAACAAYAAABkAAoAAAACAAYAAAD//wsAAAACAAYAAABkAAsAAAACAAYAAAD//wwAAAACAAYAAABkAAwAAAACAAYAAAD//w0AAAACAAYAAABkAA0AAAACAAYAAAD//w4AAAACAAYAAABkAA4AAAACAAYAAAD//w8AAAACAAYAAABkAA8AAAACAAYAAAD//xAAAAACAAYAAABkABAAAAACAAYAAAD//xEAAAACAAYAAABkABEAAAACAAYAAAA=")
+tile_set = ExtResource("3_5j0jk")
+
+[node name="Hints" type="Node2D" parent="." unique_id=2141532872]
+
+[node name="Hint" type="Label" parent="Hints" unique_id=718862076]
+offset_left = 547.0
+offset_top = 166.0
+offset_right = 767.0
+offset_bottom = 178.0
+text = "Blue gems give your air jump back!"
+horizontal_alignment = 1
+
+[node name="Objects" type="Node2D" parent="." unique_id=1411407944]
+
+[node name="Bat" type="Area2D" parent="Objects" unique_id=635393709 instance=ExtResource("4_vqqq3")]
+position = Vector2(1197, 81)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("5_nnt6u")
+min_x = 1107.0
+max_x = 1287.0
+speed = 40.0
+frames = PackedInt32Array(24, 25, 26, 25)
+frame_time = 0.1
+bob_height = 3.0
+
+[node name="Coin" type="Area2D" parent="Objects" unique_id=1528134315 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(1467, 99)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="@Area2D@86" type="Area2D" parent="Objects" unique_id=707808673 instance=ExtResource("4_vqqq3")]
+position = Vector2(513, 117)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("5_nnt6u")
+min_x = 423.0
+max_x = 603.0
+speed = 40.0
+frames = PackedInt32Array(24, 25, 26, 25)
+frame_time = 0.1
+bob_height = 3.0
+
+[node name="@Area2D@87" type="Area2D" parent="Objects" unique_id=208310703 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(783, 117)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="@Area2D@88" type="Area2D" parent="Objects" unique_id=2097888438 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(855, 117)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="@Area2D@89" type="Area2D" parent="Objects" unique_id=1584074950 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(1251, 117)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="@Area2D@90" type="Area2D" parent="Objects" unique_id=927230915 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(1269, 117)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="@Area2D@91" type="Area2D" parent="Objects" unique_id=477736138 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(369, 135)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="@Area2D@92" type="Area2D" parent="Objects" unique_id=1965593834 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(387, 135)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="RefillGem" type="Area2D" parent="Objects" unique_id=782384875 instance=ExtResource("8_3war2")]
+position = Vector2(1467, 153)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_amq1l")
+
+[node name="@Area2D@93" type="Area2D" parent="Objects" unique_id=710511436 instance=ExtResource("8_3war2")]
+position = Vector2(819, 171)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("9_amq1l")
+
+[node name="@Area2D@94" type="Area2D" parent="Objects" unique_id=1667641410 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(261, 189)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="@Area2D@95" type="Area2D" parent="Objects" unique_id=1766698518 groups=["coin"] instance=ExtResource("6_d4rua")]
+position = Vector2(279, 189)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("7_qqimg")
+
+[node name="Goal" type="Area2D" parent="Objects" unique_id=1749046800 instance=ExtResource("10_636ke")]
+position = Vector2(1719, 207)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("11_vgv04")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1949470343 groups=["player"] instance=ExtResource("12_q5sut")]
+position = Vector2(45, 244)
+collision_layer = 2
+floor_snap_length = 3.0
+script = ExtResource("13_2v7ye")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=67859394 instance=ExtResource("14_o7wf0")]
+layer = 10
+script = ExtResource("15_mq65u")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=36792739 instance=ExtResource("16_bcmmy")]
+process_mode = 3
+layer = 20
+script = ExtResource("17_lstof")
