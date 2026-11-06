@@ -1,0 +1,12 @@
+# Godot 4
+.godot/
+/android/
+*.translation
+
+# Export output (upload the zip to itch.io, don't commit it)
+/build/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.tmp
