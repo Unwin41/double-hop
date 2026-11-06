@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/goal.gd" id="1_goal"]
+[ext_resource type="Texture2D" path="res://assets/sprites/tiles.png" id="2_tiles"]
+
+[sub_resource type="RectangleShape2D" id="Shape_goal"]
+size = Vector2(12, 34)
+
+[node name="Goal" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_goal")
+
+[node name="Pole" type="Sprite2D" parent="."]
+texture = ExtResource("2_tiles")
+hframes = 20
+vframes = 9
+frame = 131
+
+[node name="Flag" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+texture = ExtResource("2_tiles")
+hframes = 20
+vframes = 9
+frame = 111
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("Shape_goal")

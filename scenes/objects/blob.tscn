@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/patroller.gd" id="1_patrol"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters.png" id="2_chars"]
+
+[sub_resource type="RectangleShape2D" id="Shape_blob"]
+size = Vector2(12, 8)
+
+[node name="Blob" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_patrol")
+speed = 28.0
+frames = PackedInt32Array(18, 19)
+frame_time = 0.25
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 9)
+texture = ExtResource("2_chars")
+offset = Vector2(0, -12)
+hframes = 9
+vframes = 3
+frame = 18
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("Shape_blob")
