@@ -28,19 +28,24 @@ func _ready() -> void:
 	repeat_times = 3
 
 
-## One full repeat of the theme's band pattern, as tall as the screen.
+## The theme's band pattern, as tall as the screen. The pattern is repeated
+## until the strip is at least as wide as the screen; a short pattern (5 tiles
+## = 120 px) would otherwise leave Parallax2D's copies short of the right edge.
 func _build_strip() -> ImageTexture:
 	var theme: Dictionary = THEMES[theme_index]
 	var band: Array = theme["band"]
 	var band_row := SCREEN_ROWS - BOTTOM_ROWS - 1
 	var sheet := BG_TEXTURE.get_image()
 	sheet.convert(Image.FORMAT_RGBA8)
-	var image := Image.create_empty(band.size() * TILE, SCREEN_ROWS * TILE, false, Image.FORMAT_RGBA8)
-	for c in band.size():
+	var screen_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
+	var pattern_width: int = band.size() * TILE
+	var columns: int = band.size() * ceili(float(screen_width) / pattern_width)
+	var image := Image.create_empty(columns * TILE, SCREEN_ROWS * TILE, false, Image.FORMAT_RGBA8)
+	for c in columns:
 		for r in SCREEN_ROWS:
 			var tile_id: int = theme["top"]
 			if r == band_row:
-				tile_id = band[c]
+				tile_id = band[c % band.size()]
 			elif r > band_row:
 				tile_id = theme["bottom"]
 			var src := Rect2i((tile_id % SHEET_COLUMNS) * TILE, (tile_id / SHEET_COLUMNS) * TILE, TILE, TILE)
