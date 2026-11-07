@@ -6,7 +6,7 @@
 
 ![Double Hop gameplay](docs/gameplay.gif)
 
-### [▶ Play in your browser on itch.io](https://YOUR-ITCH-NAME.itch.io/double-hop)
+### [▶ Play in your browser on itch.io](https://unwin.itch.io/double-hop)
 
 Made with Godot 4 · 7 short levels · about 5–10 minutes · keyboard or gamepad
 
