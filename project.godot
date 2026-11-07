@@ -31,22 +31,17 @@ window/size/viewport_height=216
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
 window/stretch/scale_mode="integer"
 
 [gui]
 
 theme/custom="res://scenes/ui/theme.tres"
 
-[input_devices]
-
-pointing/emulate_touch_from_mouse=false
-
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.996, 0.894, 0.82, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
-environment/defaults/default_clear_color=Color(0.996, 0.894, 0.82, 1)
